@@ -57,9 +57,6 @@ int main() {
     head = push(head, 2);
     int y = 1;
     int j = 3;
-    /*push(head, 3);
-    y++;
-    j = 3;*/
     while (y != n) {
         if (check_list(head, j)) {
             y++;
