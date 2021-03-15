@@ -11,11 +11,11 @@ struct elem {
     elem *next;
 };
 
-void push(elem *&head, int n) {
+elem *push(elem *&head, int n) {
     elem *p = new elem;
     p->val = n;
     p->next = head;
-    head = p;
+    return p;
 }
 
 int pop(elem *&head) {
@@ -26,26 +26,26 @@ int pop(elem *&head) {
     return n;
 }
 
-bool empty(elem *head) {
-    return head == NULL;
+elem *empty() {
+    return NULL;
 }
 
-void print_list(elem* head) {
-    elem* p = head;
+void print_list(elem *head) {
+    elem *p = head;
     if (p) {
-        print_list(p -> next);
-        cout << p -> val << " ";
+        print_list(p->next);
+        cout << p->val << " ";
     }
 }
 
-bool check_list(elem* head, int x) {
-    elem * p = head;
+bool check_list(elem *head, int x) {
+    elem *p = head;
     while (p) {
-        int a = p -> val;
+        int a = p->val;
         if (x % a == 0) {
             return false;
         }
-        p = p -> next;
+        p = p->next;
     }
     return true;
 }
@@ -53,31 +53,20 @@ bool check_list(elem* head, int x) {
 int main() {
     int n;
     cin >> n;
-    elem *head = NULL;
-    push(head, 2);
+    elem *head = empty();
+    head = push(head, 2);
     int y = 1;
-    int j = 2;
-    if (n == 1) {
-        cout << j << endl;
-    } else {
-        if (n == 2) {
-            push(head, 3);
-            print_list(head);
-        } else {
-            push(head, 3);
+    int j = 3;
+    /*push(head, 3);
+    y++;
+    j = 3;*/
+    while (y != n) {
+        if (check_list(head, j)) {
             y++;
-            j = 3;
-            while (y != n) {
-                j += 2;
-                bool f = true;
-                check_list(head, j);
-                //}
-                if (f) {
-                    push(head, j);
-                    y++;
-                }
-            }
-            print_list(head);
+            head = push(head, j);
         }
+        j += 2;
     }
+    print_list(head);
+    return 0;
 }
