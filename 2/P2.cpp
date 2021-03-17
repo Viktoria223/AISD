@@ -1,10 +1,7 @@
-//
-// Created by huawei on 01.03.2021.
-//
-#include <iostream>
+/*#include <iostream>
 
 using namespace std;
-
+*/
 cycle find_cycle(elem* head) {
 	cycle ans;
 	ans.len = -1;
