@@ -7,7 +7,7 @@ cycle find_cycle(elem* head) {
 	ans.len = -1;
 	ans.start = -1;
     bool isTrue = false;
-	int count = 0;
+	int len = 0;
 	if (head == NULL) {
 		ans.start = 0;
 		return ans;
@@ -21,11 +21,11 @@ cycle find_cycle(elem* head) {
 		first = first->next;
 		second = second->next->next;
 		if (first == second) {
-            count++;
+            len++;
             first = first->next;
 		    isTrue = true;
 			while (first != second) {
-                count++;
+                len++;
 			    first = first->next;
 			}
 			break;
@@ -35,7 +35,7 @@ cycle find_cycle(elem* head) {
         int index = 0;
 	    first = head;
 		second = head;
-        ans.count = count;
+        ans.len = len;
 		for (int i = 0; i < count; i++) {
 			second = second->next;
 		}
@@ -49,10 +49,10 @@ cycle find_cycle(elem* head) {
 	else {
 		elem* element = head;
 		while (element) {
-            count++;
+            len++;
 		    element = element->next;
 		}
-		ans.start = count;
+		ans.start = len;
 	}
 	return ans;
 }
