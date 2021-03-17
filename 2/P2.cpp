@@ -36,7 +36,7 @@ cycle find_cycle(elem* head) {
 	    first = head;
 		second = head;
         ans.len = len;
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < len; i++) {
 			second = second->next;
 		}
 		while (first != second) {
