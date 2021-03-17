@@ -32,7 +32,7 @@ cycle find_cycle(elem* head) {
 		}
 	}
 	if (isTrue) {
-        int index = 0;
+        int c = 0;
 	    first = head;
 		second = head;
         ans.len = len;
@@ -40,11 +40,11 @@ cycle find_cycle(elem* head) {
 			second = second->next;
 		}
 		while (first != second) {
-            index++;
+            c++;
 		    first = first->next;
 			second = second->next;
 		}
-		ans.start = index;
+		ans.start = c;
 	}
 	else {
 		elem* element = head;
