@@ -36,14 +36,13 @@ int priority(char c) {
     int pr = 0;
     if (c == '*') {
         pr = 2;
-    }
-    else if (c == '+') {
+    } else if (c == '+') {
         pr = 1;
     }
     return pr;
 }
 
-string algorithm(string& exp) {
+string algorithm(string &exp) {
     elem *head = NULL;
     string result;
     for (char c : exp) {
@@ -51,22 +50,19 @@ string algorithm(string& exp) {
             c == '8' || c == '9') {
             result.push_back(c);
             result.push_back(' ');
-        }
-        else if (c == '(') {
+        } else if (c == '(') {
             push(head, c);
-        }
-        else if (c == ')') {
-            char t = peek(head);
+        } else if (c == ')') {
+            char el = peek(head);
             pop(head);
-            while (t != '(') {
-                result.push_back(t);
+            while (el != '(') {
+                result.push_back(el);
                 result.push_back(' ');
-                t = peek(head);
+                el = peek(head);
                 pop(head);
             }
-        }
-        else {
-            while (!empty(head) && priority(peek(head)) >= priority(c)) {
+        } else {
+            while (priority(peek(head)) >= priority(c) && !empty(head)) {
                 result.push_back(peek(head));
                 result.push_back(' ');
                 pop(head);
@@ -81,6 +77,15 @@ string algorithm(string& exp) {
     }
     return result;
 }
+
+int main() {
+    string exp;
+    cin >> exp;
+    cout << algorithm(exp);
+}
+
+
+
 
 /*int priority(char t) {
     int pr;
@@ -152,9 +157,3 @@ string algorithm(string exp) {
     }
     return result;
 }*/
-
-int main() {
-    string exp;
-    cin >> exp;
-    cout << algorithm(exp);
-}
