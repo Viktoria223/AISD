@@ -62,7 +62,7 @@ string algorithm(string &exp) {
                 pop(head);
             }
         } else {
-            while (priority(peek(head)) >= priority(c) && !empty(head)) {
+            while (!empty(head) && priority(peek(head)) >= priority(c)) {
                 result.push_back(peek(head));
                 result.push_back(' ');
                 pop(head);
