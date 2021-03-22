@@ -32,7 +32,57 @@ bool empty(elem *head) {
     return head == NULL;
 }
 
-int priority(char t) {
+int priority(char c) {
+    int pr = 0;
+    if (c == '*') {
+        pr = 2;
+    }
+    else if (c == '+') {
+        pr = 1;
+    }
+    return pr;
+}
+
+string algorithm(string& exp) {
+    elem *head = NULL;
+    string result;
+    for (char c : exp) {
+        if (c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' ||
+            c == '8' || c == '9') {
+            result.push_back(c);
+            result.push_back(' ');
+        }
+        else if (c == '(') {
+            push(head, c);
+        }
+        else if (c == ')') {
+            char t = peek(head);
+            pop(head);
+            while (t != '(') {
+                result.push_back(t);
+                result.push_back(' ');
+                t = peek(head);
+                pop(head);
+            }
+        }
+        else {
+            while (!empty(head) && priority(peek(head)) >= priority(c)) {
+                result.push_back(peek(head));
+                result.push_back(' ');
+                pop(head);
+            }
+            push(head, c);
+        }
+    }
+    while (!empty(head)) {
+        result.push_back(peek(head));
+        result.push_back(' ');
+        pop(head);
+    }
+    return result;
+}
+
+/*int priority(char t) {
     int pr;
     if (t == '*') {
         int pr = 1;
@@ -48,20 +98,14 @@ string algorithm(string exp) {
     elem *head = NULL;
     bool r = false;
     bool open = false;
-    bool isTrue = false;
-    bool end = false;
-    int t = 0;
     int a = 0;
     char e = NULL;
     for (char &c : exp) {
         if (c == '(') {
-            isTrue = true;
             open = true;
         }
         if (c == ')') {
-            isTrue = false;
             r = true;
-            end = true;
         }
         if (c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' ||
             c == '8' || c == '9') {
@@ -98,25 +142,7 @@ string algorithm(string exp) {
             }
             r = false;
         }
-
     }
-    /*if (end) {
-        while(!empty(head)) {
-            if (peek(head) == '*') {
-                result.push_back(pop(head));
-                result.push_back(' ');
-            }
-            if (peek(head) == '+') {
-                pop(head);
-                t++;
-            }
-        }
-        for (int i = 0; i < t; i++) {
-            result.push_back('+');
-            result.push_back(' ');
-        }
-    }*/
-
     while(!empty(head)) {
         result.push_back(pop(head));
         result.push_back(' ');
@@ -125,7 +151,7 @@ string algorithm(string exp) {
         result.push_back(e);
     }
     return result;
-}
+}*/
 
 int main() {
     string exp;
