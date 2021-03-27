@@ -36,17 +36,20 @@ int main() {
             // cout << "T:" << k << " " << b[k] << endl;
             f &= b[k];
             k++;
+
         }
         k--;
         if (!f) {
             // кладу в стэк
             // cout << "ST: " << k << endl;
+            count = k;
             c[d]=k;
             d++;
             // помечаю вершину как пройденную
             b[k]=true;
             // пока стэк не пуст
             while (d>0) {
+                //count++;
                 // вытаскиваю вершину
                 --d;
                 k=c[d];
@@ -57,11 +60,11 @@ int main() {
                     if(a[k][i] && !b[i]) {
                         c[d++]=i;
                         b[i]=true;
-                        count++;
+
                     }
-                if(count > max) {
-                    max = count;
-                }
+            }
+            if(count > max) {
+                max = count;
             }
             // увеличиваю количество
             // компонент связности
