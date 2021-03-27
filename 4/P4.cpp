@@ -30,19 +30,18 @@ int main() {
     // не пройденные вершины
     bool f = true;
     do {
+        count = 0;
         f = true;
         int k=0;
         while (k<n && f) {
             // cout << "T:" << k << " " << b[k] << endl;
             f &= b[k];
             k++;
-
         }
         k--;
         if (!f) {
             // кладу в стэк
             // cout << "ST: " << k << endl;
-            count = k;
             c[d]=k;
             d++;
             // помечаю вершину как пройденную
@@ -56,6 +55,7 @@ int main() {
                 // cout << "CUR:" << k << endl;
                 // добавляю все связанные
                 // вершины, где я не был
+                count++;
                 for (int i=0;i<n;i++)
                     if(a[k][i] && !b[i]) {
                         c[d++]=i;
