@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(.)
 
-add_executable(Homeworks "derevo otrezkov/main.cpp" "derevo otrezkov/main.h")
+add_executable(Homeworks derevoOtrezkov/main.cpp)
