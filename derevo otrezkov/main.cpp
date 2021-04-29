@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -42,16 +44,37 @@ struct tree {
 
 int main() {
     int n, *arr;
-    cin >> n;
-    arr = new int[n + 1];
-    for (int i = 1; i <= n; ++i) cin >> arr[i];
-    tree tr(n);
-    tr.build(arr, 1, 1, n);
-    int v;
-    cin >> v;
-    cout << tr.find(1, 1, n, v) << '\n';
+
+    arr = new int[10000];
+
+
+
+    for (int j = 0; j < 51; j++) {
+        clock_t start;
+        double duration;
+        start = clock();
+        ifstream fin("C://Users/huawei/Desktop/Java/Homeworks/Tests/test" + to_string(j + 1) + ".txt");
+        fin >> n;
+        cout << "test #" << j+1 << endl;
+        cout << "n: " << n << endl;
+        for (int i = 1; i <= n; ++i) {
+            fin >> arr[i];
+        }
+        tree tr(n);
+        tr.build(arr, 1, 1, n);
+        duration = (clock() - start)/(double)CLOCKS_PER_SEC;
+        cout << "time1:" << duration << endl;
+        int v;
+        fin >> v;
+        start = clock();
+        cout << "answer: " << tr.find(1, 1, n, v) << endl;
+        duration = (clock() - start)/(double)CLOCKS_PER_SEC;
+        cout << "time2:" << duration << endl << endl;
+    }
     return 0;
 }
+
+
 
 /*
 Есть воздушный шар, который имеет некоторую грузоподъемность.
