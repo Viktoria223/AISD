@@ -44,11 +44,7 @@ struct tree {
 
 int main() {
     int n, *arr;
-
     arr = new int[10000];
-
-
-
     for (int j = 0; j < 51; j++) {
         clock_t start;
         double duration;

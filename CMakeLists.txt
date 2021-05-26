@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(.)
 
-add_executable(Homeworks "C4/Class4.cpp")
+add_executable(Homeworks "quick sort/main.cpp")
