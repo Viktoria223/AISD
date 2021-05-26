@@ -17,12 +17,6 @@ int main() {
     for (int i = 0; i < N; i++) {
         res[i] = 0;
     }
-    /*if (mas[0] > S) {
-        for (int i = 0; i < N; i++) {
-            cout << res[i];
-            cout << " ";
-        }
-    } else {*/
         while (S != 0) {
             cout << 'y';
             while (mas[num] * count < S) {
@@ -39,5 +33,4 @@ int main() {
             cout << res[i];
             cout << " ";
         }
-    //}
 }
