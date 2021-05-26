@@ -378,9 +378,6 @@ void task_test(vector<string>& words, int number_of_test) {
 
 int main() {
     vector<string> words;
-    //string text;
-    //getline(cin, text);
-    //words = split_string(text);
     for (int test = 1; test <= 50; test++) {
         for (int i = 0; i < 200; i++) {
             words.push_back(generate_word());
