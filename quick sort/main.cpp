@@ -36,20 +36,21 @@ void quickSort(int *numbers, int left, int right) {
 }
 
 int main() {
-    int n;
-    int a[n];
-    // Заполнение массива случайными числами
-    for (int i = 0; i < n; i++)
-        a[i] = rand() % 201 - 100;
-    // Вывод элементов массива до сортировки
-    for (int i = 0; i < n; i++)
-        printf("%4d ", a[i]);
-    printf("\n");
-    quickSort(a, 0, n - 1); // вызов функции сортировки
-    // Вывод элементов массива после сортировки
-    for (int i = 0; i < n; i++)
-        printf("%4d ", a[i]);
-    printf("\n");
-    getchar();
-    return 0;
+    int n, *arr;
+    for (int j = 0; j <= 51; j++) {
+        clock_t start;
+        double duration;
+        start = clock();
+        ifstream fin("C://Users/huawei/Desktop/Java/Homeworks/Tests2/ttest" + to_string(j + 1) + ".txt");
+        fin >> n;
+        arr = new int[n];
+        cout << "test #" << j+1 << endl;
+        cout << "n: " << n << endl;
+        for (int i = 1; i < n; ++i) {
+            fin >> arr[i];
+        }
+        quickSort(arr, 0, n - 1);
+        duration = (clock() - start)/(double)CLOCKS_PER_SEC;
+        cout << "time1:" << duration << endl;
+    }
 }
